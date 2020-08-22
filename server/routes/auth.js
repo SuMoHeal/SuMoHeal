@@ -5,7 +5,12 @@ const User = mongoose.model("User")
 const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require("../keys")
+const requireLogin = require("../middleware/requirelogin")
 
+// we created the middleware to confirm the user token 
+router.get('/protected',requireLogin,(req,res)=>{
+    res.send("hello user")
+})
 //saving data to mongo database & testing that on postman
 router.post('/signup',(req,res)=>{
     const {name,email,password,phoneNumber} = req.body
