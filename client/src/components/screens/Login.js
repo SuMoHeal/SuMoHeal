@@ -8,7 +8,7 @@ const Login = ()=>{
       <div className="card auth-card input-field">
       <h2>SuMoHeal</h2>
       <div class="input-field col s6">
-          <i class="material-icons prefix">email</i>
+          <i class="material-icons prefix">mail_outline</i>
           <input  type="text" placeholder="email"/>
         </div>
         <div class="input-field col s6">
