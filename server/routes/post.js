@@ -30,7 +30,7 @@ router.post('/createpost',requireLogin,(req,res) =>{
         hospitalAddress,
         descAboutPatientHealth,
         patientPhoneNumber,
-        pic,
+        photo:pic,
         postedBy:req.user   //=> to know who put this post 
     })
     post.save().then(result =>{

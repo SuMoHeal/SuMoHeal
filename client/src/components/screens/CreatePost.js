@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import M from 'materialize-css'
 
@@ -13,31 +13,15 @@ const CreatePost = ()=>{
   const [description,setDescription] = useState("")
   const [image,setImage] = useState("")
   const [url,setUrl] = useState("")
-
-  //using cloudinary for media upload 
-  // files can be uploaded using an HTML <input type="file" /> 
-  //input element, FormData() and fetch().
-  const postDetails = ()=>{
-    const data = new FormData()
-    data.append("file", image)
-    data.append("upload_preset","sumoheal-clone")   //=> using cloudinary to upload image
-    data.append("cloud_name","sarabelia")
-    fetch("	https://api.cloudinary.com/v1_1/sarabelia/image/upload",{
-      method:"post",
-      body: data
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      setUrl(data.url)
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-
+  
+  useEffect(()=>{
+    if(url){
+    //making request to send data
     fetch("/createpost",{
       method:"post",
       headers:{
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          "Authorization":"Bearer "+localStorage.getItem("jwt")
       },
       body:JSON.stringify({
           title,
@@ -62,7 +46,31 @@ const CreatePost = ()=>{
   }).catch(err=>{
       console.log(err)
   })
+    }
+  },[url])
+  
+  //using cloudinary for media upload 
+  // files can be uploaded using an HTML <input type="file" /> 
+  //input element, FormData() and fetch().
+  const postDetails = ()=>{
+    const data = new FormData()
+    data.append("file", image)
+    data.append("upload_preset","sumoheal-clone")   //=> using cloudinary to upload image
+    data.append("cloud_name","sarabelia")
+    //making request to upload image
+    fetch("	https://api.cloudinary.com/v1_1/sarabelia/image/upload",{
+      method:"post",
+      body: data
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      setUrl(data.url)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
   }
+  
 
   return(
       <div className="card input-filed" 
