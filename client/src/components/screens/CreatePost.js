@@ -12,32 +12,32 @@ const CreatePost = ()=>{
       >
         <h2>SuMoHeal</h2>
      
-       <div class="input-field col s6">
-          <i class="material-icons prefix">subject</i>
+       <div className="input-field col s6">
+          <i className="material-icons prefix">subject</i>
           <input  type="text" placeholder="title"/>
         </div>
-       <div class="input-field col s6">
-          <i class="material-icons prefix">attach_money</i>
+       <div className="input-field col s6">
+          <i className="material-icons prefix">attach_money</i>
           <input  type="text" placeholder="amount"/>
         </div>
-       <div class="input-field col s6">
-          <i class="material-icons prefix">local_hospital</i>
+       <div className="input-field col s6">
+          <i className="material-icons prefix">local_hospital</i>
           <input  type="text" placeholder="Hospital Name"/>
         </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">place</i>
+        <div className="input-field col s6">
+          <i className="material-icons prefix">place</i>
           <input  type="text" placeholder="Hospital Adress"/>
         </div>
-       <div class="input-field col s6">
-          <i class="material-icons prefix">phone</i>
+       <div className="input-field col s6">
+          <i className="material-icons prefix">phone</i>
           <input  type="text" placeholder="Hospital phoneNumber"/>
         </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">contact_phone</i>
+        <div className="input-field col s6">
+          <i className="material-icons prefix">contact_phone</i>
           <input  type="text" placeholder="Patient phoneNumber"/>
         </div>
-        <div class="input-field col s6">
-          <i class="material-icons prefix">mode_edit</i>
+        <div className="input-field col s6">
+          <i className="material-icons prefix">mode_edit</i>
           <input  type="text" placeholder="Description About Patient Health & Situation"/>
         </div>
        

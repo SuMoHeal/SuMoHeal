@@ -62,7 +62,8 @@ router.post('/login',(req,res)=>{
                 //with this given token 
                 //if the user want to access any of our protected resources => he should enter with the token that we give it to him 
                 const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-                res.json({token})
+                const {_id,name,email} = savedUser
+                res.json({token,user:{_id,name,email}})
             }
             else{
                 //we put the same error cause we dont want to give the 
