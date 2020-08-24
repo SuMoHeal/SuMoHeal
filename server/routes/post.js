@@ -17,8 +17,8 @@ router.get('/allpost',(req,res)=>{
 })
 
 router.post('/createpost',requireLogin,(req,res) =>{
-    const {title,amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutPatientHealth,patientPhoneNumber} = req.body
-    if(!title || !amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutPatientHealth || !patientPhoneNumber ){
+    const {title,amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutPatientHealth,patientPhoneNumber,pic} = req.body
+    if(!title || !amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutPatientHealth || !patientPhoneNumber || !pic ){
         return res.status(422).json({error:"Please add all the fields"})
     }
     req.user.password = undefined  //=> to not make the password appear in the postedBy
@@ -30,6 +30,7 @@ router.post('/createpost',requireLogin,(req,res) =>{
         hospitalAddress,
         descAboutPatientHealth,
         patientPhoneNumber,
+        pic,
         postedBy:req.user   //=> to know who put this post 
     })
     post.save().then(result =>{
