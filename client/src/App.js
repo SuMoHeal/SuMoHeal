@@ -21,13 +21,12 @@ const Routing = ()=>{
      const user = JSON.parse(localStorage.getItem("user"))
      if(user){
        dispatch({type:"USER",payload:user})
-       history.push('/')
      }else{
        history.push('/login')
      }
   },[])
 return(
-  <switch>
+  <Switch>
   <Route  exact path="/">
        <Home />
      </Route>
@@ -43,7 +42,7 @@ return(
      <Route path="/create">
        <CreatePost />
      </Route>
-     </switch>
+     </Switch>
 )
 }
 

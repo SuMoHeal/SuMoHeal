@@ -6,11 +6,11 @@ const CreatePost = ()=>{
   const history = useHistory()
   const [title,setTitle] = useState("")
   const [amount,setAmount] = useState("")
-  const [hosName,setHosName] = useState("")
-  const [hosAdress,setHosAdress] = useState("")
-  const [hosPhoneNumber,setHosPhoneNumber] = useState("")
+  const [hospitalName,setHospitalName] = useState("")
+  const [hospitalAddress,setHospitalAddress] = useState("")
+  const [hospitalPhoneNumber,setHospitalPhoneNumber] = useState("")
   const [patientPhoneNumber,setPatientPhoneNumber] = useState("")
-  const [description,setDescription] = useState("")
+  const [descAboutPatientHealth,setDescAboutPatientHealth] = useState("")
   const [image,setImage] = useState("")
   const [url,setUrl] = useState("")
   
@@ -25,11 +25,11 @@ const CreatePost = ()=>{
          body:JSON.stringify({
           title,
           amount,
-          hosName,
-          hosAdress,
-          hosPhoneNumber,
+          hospitalName,
+          hospitalAddress,
+          hospitalPhoneNumber,
           patientPhoneNumber,
-          description,
+          descAboutPatientHealth,
           pic:url
          })
      }).then(res=>res.json())
@@ -98,22 +98,22 @@ const CreatePost = ()=>{
        <div className="input-field col s6">
           <i className="material-icons prefix">local_hospital</i>
           <input  type="text" placeholder="Hospital Name"
-           value={hosName}
-           onChange={(e)=>setHosName(e.target.value)}
+           value={hospitalName}
+           onChange={(e)=>setHospitalName(e.target.value)}
           />
         </div>
         <div className="input-field col s6">
           <i className="material-icons prefix">place</i>
           <input  type="text" placeholder="Hospital Adress"
-           value={hosAdress}
-           onChange={(e)=>setHosAdress(e.target.value)}
+           value={hospitalAddress}
+           onChange={(e)=>setHospitalAddress(e.target.value)}
           />
         </div>
        <div className="input-field col s6">
           <i className="material-icons prefix">phone</i>
           <input  type="text" placeholder="Hospital phoneNumber"
-           value={hosPhoneNumber}
-           onChange={(e)=>setHosPhoneNumber(e.target.value)}
+           value={hospitalPhoneNumber}
+           onChange={(e)=>setHospitalPhoneNumber(e.target.value)}
           />
         </div>
         <div className="input-field col s6">
@@ -126,8 +126,8 @@ const CreatePost = ()=>{
         <div className="input-field col s6">
           <i className="material-icons prefix">mode_edit</i>
           <input  type="text" placeholder="Description About Patient Health & Situation"
-           value={description}
-           onChange={(e)=>setDescription(e.target.value)}
+           value={descAboutPatientHealth}
+           onChange={(e)=>setDescAboutPatientHealth(e.target.value)}
           />
         </div>
        
