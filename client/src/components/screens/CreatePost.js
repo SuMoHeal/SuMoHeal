@@ -16,14 +16,13 @@ const CreatePost = ()=>{
   
   useEffect(()=>{
     if(url){
-    //making request to send data
-    fetch("/createpost",{
-      method:"post",
-      headers:{
-          "Content-Type":"application/json",
-          "Authorization":"Bearer "+localStorage.getItem("jwt")
-      },
-      body:JSON.stringify({
+     fetch("/createpost",{
+         method:"post",
+         headers:{
+             "Content-Type":"application/json",
+             "Authorization":"Bearer "+localStorage.getItem("jwt")
+         },
+         body:JSON.stringify({
           title,
           amount,
           hosName,
@@ -32,22 +31,22 @@ const CreatePost = ()=>{
           patientPhoneNumber,
           description,
           pic:url
-      })
-  }).then(res=>res.json())
-  .then(data=>{
-     
-      if(data.error){
-          M.toast({html: data.error,classes:"#c62828 red darken-3"})
-      }
-      else{
-          M.toast({html: "Post has been created successfully ",classes:"#4caf50 green"})
-          history.push("/")
-      }
-  }).catch(err=>{
-      console.log(err)
-  })
-    }
-  },[url])
+         })
+     }).then(res=>res.json())
+     .then(data=>{
+ 
+        if(data.error){
+           M.toast({html: data.error,classes:"#c62828 red darken-3"})
+        }
+        else{
+            M.toast({html:"Created post Successfully",classes:"#43a047 green darken-1"})
+            history.push('/')
+        }
+     }).catch(err=>{
+         console.log(err)
+     })
+ }
+ },[url])
   
   //using cloudinary for media upload 
   // files can be uploaded using an HTML <input type="file" /> 
@@ -71,7 +70,6 @@ const CreatePost = ()=>{
     })
   }
   
-
   return(
       <div className="card input-filed" 
       style={{

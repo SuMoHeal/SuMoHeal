@@ -60,7 +60,7 @@ const Signup = ()=>{
 
        <div className="input-field col s6">
           <i className="material-icons prefix">lock_outline</i>
-          <input  type="text" placeholder="Password"
+          <input  type="password" placeholder="Password"
           value={password}
           onChange={(e)=>setPassword(e.target.value)}
           />
