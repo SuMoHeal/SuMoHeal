@@ -91,6 +91,22 @@ const Home = ()=>{
     })
   }
 
+  const deletePost = (postid)=>{
+    fetch(`/deletepost/${postid}`,{
+      method:"delete",
+      headers:{
+        Authorization:"Bearer "+localStorage.getItem("jwt")
+      }
+    }).then(res=>res.json())
+    .then(result=>{
+      console.log(result)
+      const newData = data.filter(item=>{
+        return item._id !== result._id
+      })
+      setData(newData)
+    })
+  }
+
     return(
       <div className="home">
        {
@@ -105,8 +121,15 @@ const Home = ()=>{
              
                 <span className="card-title activator grey-text text-darken-4">
                 <i className="material-icons right">more_vert</i>
-                    <i className="material-icons right"> delete_forever </i>
-                    {item.intrested.includes(state._id)
+                      {
+                      item.postedBy._id == state._id  &&  <i className="material-icons right"
+                      onClick={()=>deletePost(item._id)}
+                      > delete_forever </i>
+                      
+                      }
+                    
+         
+                   {item.intrested.includes(state._id)
                     ? 
                     <i className="material-icons " 
                        onClick={()=>{unintrestedPost(item._id)}}
