@@ -53,4 +53,34 @@ router.get('/mypost',requireLogin,(req,res)=>{
     })
 })
 
+router.put('/intrested',requireLogin,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        //pshing the user to the intreseted array 
+        $push:{intrested:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+})
+
+router.put('/unintrested',requireLogin,(req,res)=>{
+    Post.findByIdAndUpdate(req.body.postId,{
+        //pullig the user from the intreseted array 
+        $pull:{intrested:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+})
+
 module.exports = router

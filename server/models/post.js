@@ -44,6 +44,10 @@ const postSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    intrested:[{
+        type:ObjectId,
+        ref:"User"
+    }],
     //building relation with User Schema in mongoodb
     postedBy:{
         type:ObjectId,
