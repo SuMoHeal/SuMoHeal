@@ -15,21 +15,21 @@ const Profile = () =>{
        })
     },[])
     return(
-        <div style={{maxWidth:"550px", margin:"0px auto"}}>
+        <div style={{maxWidth:"700px", margin:"0px auto"}}>
             <div style={{
                 display:"flex",
                 justifyContent:"space-around",
-                margin:"18px 0px",
-                borderBottom:"1px solid grey"
+                margin:"30px 0px",
+                borderBottom:"2px solid grey"
             }}>
                 <div>
-                    <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
+                    <img style={{width:"200px",height:"180px",borderRadius:"100px"}}
                      src="https://img.favpng.com/23/4/11/computer-icons-user-profile-avatar-png-favpng-QsYtjsW73M0aGLb4GbMEyLbc5.jpg"
                     />
                 </div>
                 <div>
                 <h4>{state?state.name:"loading"}</h4>
-                <div style={{display:"flex",justifyContent:"space-between",width:"108%"}}>
+                <div style={{display:"flex",justifyContent:"space-between",width:"120%"}}>
                     <h6>40 posts</h6>
                     <h6>40 followers</h6>
                     <h6>40 following</h6>
