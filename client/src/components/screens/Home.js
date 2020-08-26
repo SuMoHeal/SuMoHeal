@@ -65,6 +65,31 @@ const Home = ()=>{
       console.log(err)
     })
   }
+  const makeComment = (text,postId)=>{
+    fetch('/comment',{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":"Bearer "+localStorage.getItem("jwt")
+      },
+      body: JSON.stringify({
+        postId,
+        text
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+      const newData = data.map(item=>{
+        if(item._id==result._id){
+          return result
+        }else{
+          return item
+        }
+      })
+      setData(newData)
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
 
     return(
       <div className="home">
@@ -95,6 +120,7 @@ const Home = ()=>{
                     <i className="material-icons right ">  healing </i>
               <h6>{item.intrested.length} intrested</h6>
               <h6> {item.title}</h6>
+             
                 </span>
             <span className="card-title activator grey-text text-darken-4">{item.amount}</span>
                 <div>
@@ -111,6 +137,19 @@ const Home = ()=>{
                 </div>
                 <div>
             <span>{item.descAboutPatientHealth}</span>
+            {
+                item.comments.map(record=>{
+                  return(
+                  <h6 key={record._id}><span style={{fontWeight:"500"}}>{record.postedBy.name}</span> {record.text}</h6>
+                  )
+                })
+              }
+            <form onSubmit={(e)=>{
+              e.preventDefault()
+              makeComment(e.target[0].value,item._id)
+            }}>
+              <input type="text" placeholder="add a comment" />
+            </form>
                 </div>
               </div> 
               </div>
