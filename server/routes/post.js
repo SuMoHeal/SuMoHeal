@@ -90,7 +90,7 @@ router.put('/comment',requireLogin,(req,res)=>{
         postedBy:req.user._id
     }
     Post.findByIdAndUpdate(req.body.postId,{
-        //pshing the user to the comments array 
+        //pushing the user to the comments array 
         $push:{comments:comment}
     },{
         new:true
@@ -123,5 +123,6 @@ router.delete('/deletepost/:postId',requireLogin,(req,res)=>{
         }
     })
 })
+
 
 module.exports = router
