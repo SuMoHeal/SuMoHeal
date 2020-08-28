@@ -98,9 +98,9 @@ const Profile = () =>{
               <h5>{userProfile.user.email}</h5>
 
               <div style={{display:"flex",justifyContent:"space-between",width:"120%"}}>
-                  <h6>{userProfile.posts.length}posts</h6>
-                  <h6>{userProfile.user.followers.length} followers</h6>
-                  <h6>{userProfile.user.following.length}following</h6>
+                  <h6 className="chip">{userProfile.posts.length}posts</h6>
+                  <h6 className="chip">{userProfile.user.followers.length} followers</h6>
+                  <h6 className="chip">{userProfile.user.following.length} following</h6>
               </div>
               {showfollow?
                 <button style={{
