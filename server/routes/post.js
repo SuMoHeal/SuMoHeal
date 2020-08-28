@@ -17,6 +17,20 @@ router.get('/allpost',requireLogin,(req,res)=>{
     })
 })
 
+router.get('/getsubpost',requireLogin,(req,res)=>{
+    // if postedBy is showing in following list then show the post 
+    Post.find({postedBy:{$in:req.user.following}})
+    .populate('postedBy',"_id name")
+    .populate("comments.postedBy","_id name")
+    .then(posts=>{
+        res.json({posts})
+        
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
+
 router.post('/createpost',requireLogin,(req,res)=>{
     const {title,amount,hospitalName,hospitalPhoneNumber, hospitalAddress,descAboutPatientHealth,patientPhoneNumber,pic} = req.body
     if(!title || !amount || !hospitalName || !hospitalPhoneNumber || !hospitalAddress || !descAboutPatientHealth || !patientPhoneNumber || !pic ){
