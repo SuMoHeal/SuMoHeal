@@ -75,7 +75,7 @@ const Profile = () =>{
                      }
                  }
              })
-            
+             setShowfollow(true)
             })
     }
     return(
