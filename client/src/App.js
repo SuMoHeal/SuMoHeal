@@ -11,6 +11,7 @@ import Profile from './components/screens/Profile'
 import CreatePost from './components/screens/CreatePost'
 import {reducer,initialState} from './reducers/userReducer'
 import UserProfile from './components/screens/UserProfile'
+import SubscribedUserPosts from "./components/screens/SubscribesUserPosts";
 export const UserContext = createContext()
 
 // creating routing so we can access history  
@@ -44,6 +45,9 @@ return(
      </Route>
      <Route path="/profile/:userid">
        <UserProfile />
+     </Route>
+     <Route path="/myfollowingpost">
+       <SubscribedUserPosts />
      </Route>
      </Switch>
 )
