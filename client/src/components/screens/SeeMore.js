@@ -2,7 +2,7 @@ import React,{useState,useEffect,useContext} from 'react';
 import {UserContext} from '../../App'
 import {Link} from 'react-router-dom'
 
-const Home = ()=>{
+const SeeMore = ()=>{
    const [data,setData] = useState([])
    const {state,dispatch} = useContext(UserContext)
    useEffect (()=>{
@@ -134,9 +134,8 @@ const Home = ()=>{
               <div className="card-content">
              
                 <span className="card-title activator grey-text text-darken-4">
-                  <Link  to="/details">
                 <a className=" btn-floating btn-small waves-effect waves-light red right">  
-                <i className="material-icons right center">more_vert</i></a> </Link>
+                <i className="material-icons right center">more_vert</i></a>
                 <Link to="/healing" >
                 <i className="material-icons right">  healing </i> </Link>
                       {
@@ -165,10 +164,54 @@ const Home = ()=>{
 
              
                 </span>
-            
+                {/* <div className="card-reveal"> */}
+            <span className="card-title activator grey-text text-darken-4">{item.amount}</span>
+                <div>
+            <span>{item.hospitalName}</span>
+                </div>
+                <div>
+            <span>{item.hospitalAddress}</span>
+                </div>
+                <div>
+            <span>{item.hospitalPhoneNumber}</span>
+                </div>
+                <div>
+            <span>{item.patientPhoneNumber}</span>
+                </div>
+                <div>
+            <span>{item.descAboutPatientHealth}</span>
+            {/* </div> */}
+            {
+                item.comments.map(record=>{
+                  return(
+                   <table className="striped">
+                      <thead>
+                        <tr>
+                            <th>{record.postedBy.name}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>{record.text}</td>
+                      </tr>
+                      </tbody>
+                   </table>
+                  // <h6 className="col l4 offset-l2 s12" key={record._id}><span className="chip" style={{fontWeight:"500"}}>{record.postedBy.name}</span> 
+                  // {record.text}</h6>
+                  )
+                })
+              }
+            <form onSubmit={(e)=>{
+              e.preventDefault()
+              makeComment(e.target[0].value,item._id)
+            }}>
+              
+              <input type="text" placeholder="add a comment"/>
+                   
+            </form>
                 </div>
               </div> 
-             
+              </div>
               
             )
          })
@@ -179,4 +222,4 @@ const Home = ()=>{
     )
 }
 
-export default Home
+export default SeeMore 
