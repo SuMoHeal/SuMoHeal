@@ -107,6 +107,7 @@ const Home = ()=>{
       setData(newData)
     })
   }
+ 
 
     return(
       <div className="home">
@@ -114,14 +115,29 @@ const Home = ()=>{
          data.map(item=>{
             return (
               <div className="card home-card" key={item._id}>
-                <h5 style={{padding:"5px"}}><Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>{item.postedBy.name}</Link></h5>
+               
+                <div  style={{display:"flex",justifyContent:"space-between",padding:"5px"}}>
+                <Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>
+                <h5 className="chip">
+                <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky"}}
+                  src={item.postedBy.pic}
+                    />
+                    {item.postedBy.name} 
+                    </h5>
+                </Link>
+              
+                </div>
+
               <div className="card-image waves-effect waves-block waves-light">
                 <img className="activator" src={item.photo} />
               </div>
               <div className="card-content">
              
                 <span className="card-title activator grey-text text-darken-4">
-                <i className="material-icons right">more_vert</i>
+                <a className=" btn-floating btn-small waves-effect waves-light red right">  
+                <i className="material-icons right center">more_vert</i></a>
+                <Link to="/healing" >
+                <i className="material-icons right">  healing </i> </Link>
                       {
                       item.postedBy._id == state._id  &&  <i className="material-icons right"
                       onClick={()=>deletePost(item._id)}
@@ -140,12 +156,15 @@ const Home = ()=>{
                     onClick={()=>{intrestedPost(item._id)}}
                     > thumb_up </i>
                     }
-                   
-                    <i className="material-icons right ">  healing </i>
+                    
+                    
               <h6>{item.intrested.length} intrested</h6>
               <h6> {item.title}</h6>
              
+
+             
                 </span>
+                {/* <div className="card-reveal"> */}
             <span className="card-title activator grey-text text-darken-4">{item.amount}</span>
                 <div>
             <span>{item.hospitalName}</span>
@@ -161,12 +180,24 @@ const Home = ()=>{
                 </div>
                 <div>
             <span>{item.descAboutPatientHealth}</span>
+            {/* </div> */}
             {
                 item.comments.map(record=>{
                   return(
- 
-                  <h6 key={record._id}><span style={{fontWeight:"500"}}>{record.postedBy.name}</span> {record.text}</h6>
-                
+                   <table className="striped">
+                      <thead>
+                        <tr>
+                            <th>{record.postedBy.name}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>{record.text}</td>
+                      </tr>
+                      </tbody>
+                   </table>
+                  // <h6 className="col l4 offset-l2 s12" key={record._id}><span className="chip" style={{fontWeight:"500"}}>{record.postedBy.name}</span> 
+                  // {record.text}</h6>
                   )
                 })
               }

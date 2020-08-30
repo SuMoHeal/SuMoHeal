@@ -23,8 +23,8 @@ const Profile = () =>{
                 borderBottom:"2px solid grey"
             }}>
                 <div>
-                    <img style={{width:"200px",height:"180px",borderRadius:"100px"}}
-                     src="https://img.favpng.com/23/4/11/computer-icons-user-profile-avatar-png-favpng-QsYtjsW73M0aGLb4GbMEyLbc5.jpg"
+                    <img style={{width:"250px",height:"200px",borderRadius:"100px"}}
+                     src={state?state.pic:"loading"}
                     />
                 </div>
                 <div>

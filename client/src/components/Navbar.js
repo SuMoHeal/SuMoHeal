@@ -12,7 +12,7 @@ const NavBar = () =>{
       <li><Link to="/create">Create Post</Link></li>,
       <li><Link to="/myfollowingpost">My following Posts</Link></li>,
       
-      <button className="btn waves-effect waves-light #dd2c00 deep-orange accent-4"
+      <button className="btn waves-effect waves-light red"
       onClick={()=>{
         localStorage.clear()
         dispatch({type:"CLEAR"})

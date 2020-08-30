@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    pic:{
+        type:String,
+        default:"https://res.cloudinary.com/sarabelia/image/upload/v1598590419/146-1468479_my-profile-icon-blank-profile-picture-circle-hd_uzg3lj.png"
+    },
     followers:[{
     type:ObjectId,
     ref:"User"

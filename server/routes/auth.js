@@ -10,7 +10,7 @@ const requireLogin = require("../middleware/requirelogin")
 
 //saving data to mongo database & testing that on postman
 router.post('/signup',(req,res)=>{
-    const {name,email,password,phoneNumber} = req.body
+    const {name,email,password,phoneNumber,pic} = req.body
     if(!email || !password || !name || !phoneNumber){
        return res.status(422).json({error:"please add all the fields"})
     }
@@ -27,7 +27,8 @@ router.post('/signup',(req,res)=>{
             email,
             password : hashedpassword,
             name,
-            phoneNumber
+            phoneNumber,
+            pic
         })
         user.save()
         .then(user=>{
@@ -62,8 +63,8 @@ router.post('/login',(req,res)=>{
                 //with this given token 
                 //if the user want to access any of our protected resources => he should enter with the token that we give it to him 
                 const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-                const {_id,name,email,followers,following} = savedUser
-                res.json({token,user:{_id,name,email,followers,following}})
+                const {_id,name,email,followers,following,pic} = savedUser
+                res.json({token,user:{_id,name,email,followers,following,pic}})
             }
             else{
                 //we put the same error cause we dont want to give the 
