@@ -28,7 +28,7 @@ const Healing =() =>{
            on this email "hammamiamneh7@gmail.com"</h6>
         </div>
          
-        //amneh
+        
     )
 }
 
