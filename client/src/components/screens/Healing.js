@@ -1,8 +1,34 @@
-import React,{useState,useEffect} from 'react'
+import React, { Component } from 'react';
 import {useHistory} from 'react-router-dom'
-import M from 'materialize-css'
 
-const Healing =() =>{
+import $ from 'jquery'
+import axios from "axios";
+
+class Healing extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: "",
+            date: ""
+        }
+        this.handle = this.handle.bind(this)
+    }
+    handle(event){
+    
+        var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val()}
+            axios.post('http://localhost:8000/send', user)
+                .then((res) => {
+                    console.log(res.data)
+      
+                }).catch((error) => {
+                    console.log(error)
+                });
+      
+        }
+        onChangeText(e) {
+          this.setState({ text: e.target.value })
+      }
+          render(){
     return (
         <div className="mycard">
         <div className="card auth-card input-field">
@@ -16,7 +42,7 @@ const Healing =() =>{
             <h6  style={{textAlign:"left"}}>How do you want to pay?</h6>
             <input  type="text" />   
           </div>
-        <button className="btn waves-effect waves-light #0d47a1 blue darken-4">
+        <button className="btn waves-effect waves-light #0d47a1 blue darken-4" onClick={this.handle}>
         Submit
         </button>
 
@@ -30,6 +56,7 @@ const Healing =() =>{
          
         
     )
+}
 }
 
 export default Healing
