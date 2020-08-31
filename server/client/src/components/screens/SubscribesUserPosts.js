@@ -114,7 +114,17 @@ const Home = ()=>{
          data.map(item=>{
             return (
               <div className="card home-card" key={item._id}>
-                <h5 style={{padding:"5px"}}><Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>{item.postedBy.name}</Link></h5>
+                 <div  style={{display:"flex",justifyContent:"space-between",padding:"5px"}}>
+              <Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>
+              <h5 className="chip">
+              <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky"}}
+                src={item.postedBy.pic}
+                  />
+                  {item.postedBy.name} 
+                  </h5>
+              </Link>
+            
+              </div>
               <div className="card-image waves-effect waves-block waves-light">
                 <img className="activator" src={item.photo} />
               </div>

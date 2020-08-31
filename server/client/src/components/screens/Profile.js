@@ -100,7 +100,7 @@ const Profile = () =>{
                             <input className="file-path validate" type="text" />
                         </div>
                         </div>
-    
+                        </div>
           <div className="gallery" >
 
               {
@@ -112,7 +112,7 @@ const Profile = () =>{
               }
            </div>
           </div>
-          </div>
+          
       
     )
 }
