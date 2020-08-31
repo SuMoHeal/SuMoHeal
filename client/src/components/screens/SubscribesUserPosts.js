@@ -141,7 +141,8 @@ const Home = ()=>{
                     > thumb_up </i>
                     }
                    
-                    <i className="material-icons right ">  healing </i>
+                   <Link to="/healing" >
+                <i className="material-icons right">  healing </i> </Link>
               <h6>{item.intrested.length} intrested</h6>
               <h6> {item.title}</h6>
              

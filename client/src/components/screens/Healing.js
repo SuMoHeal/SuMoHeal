@@ -5,29 +5,29 @@ import $ from 'jquery'
 import axios from "axios";
 
 class Healing extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: "",
-            date: ""
-        }
-        this.handle = this.handle.bind(this)
-    }
-    handle(event){
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         text: "",
+    //         date: ""
+    //     }
+    //     this.handle = this.handle.bind(this)
+    // }
+    // handle(event){
     
-        var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val()}
-            axios.post('/send', user)
-                .then((res) => {
-                    console.log(res.data)
+    //     var user = {id:localStorage.getItem('id'),payment:$('#pay').val(),selected:$('#select').val()}
+    //         axios.post('/send', user)
+    //             .then((res) => {
+    //                 console.log(res.data)
       
-                }).catch((error) => {
-                    console.log(error)
-                });
+    //             }).catch((error) => {
+    //                 console.log(error)
+    //             });
       
-        }
-        onChangeText(e) {
-          this.setState({ text: e.target.value })
-      }
+    //     }
+    //     onChangeText(e) {
+    //       this.setState({ text: e.target.value })
+    //   }
           render(){
     return (
         <div className="mycard">
@@ -42,7 +42,7 @@ class Healing extends Component {
             <h6  style={{textAlign:"left"}}>How do you want to pay?</h6>
             <input  type="text" />   
           </div>
-        <button className="btn waves-effect waves-light #0d47a1 blue darken-4" onClick={this.handle}>
+        <button className="btn waves-effect waves-light #0d47a1 blue darken-4" >
         Submit
         </button>
 
