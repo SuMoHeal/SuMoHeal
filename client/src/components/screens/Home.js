@@ -119,7 +119,7 @@ const Home = ()=>{
               <div  style={{display:"flex",justifyContent:"space-between",padding:"5px"}}>
               <Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>
               <h5 className="chip">
-              <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky" }}
+              <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky"}}
                 src={item.postedBy.pic}
                   />
                   {item.postedBy.name} 
@@ -164,7 +164,7 @@ const Home = ()=>{
 
            
               </span>
-              {/* <div className="card-reveal"> */}
+             
           <span className="card-title activator grey-text text-darken-4">{item.amount}</span>
               <div>
           <span>{item.hospitalName}</span>
@@ -180,7 +180,7 @@ const Home = ()=>{
               </div>
               <div>
           <span>{item.descAboutPatientHealth}</span>
-          {/* </div> */}
+       
           {
               item.comments.map(record=>{
                 return(
@@ -196,8 +196,6 @@ const Home = ()=>{
                     </tr>
                     </tbody>
                  </table>
-                // <h6 className="col l4 offset-l2 s12" key={record._id}><span className="chip" style={{fontWeight:"500"}}>{record.postedBy.name}</span> 
-                // {record.text}</h6>
                 )
               })
             }
