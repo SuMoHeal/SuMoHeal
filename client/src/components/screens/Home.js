@@ -119,7 +119,7 @@ const Home = ()=>{
               <div  style={{display:"flex",justifyContent:"space-between",padding:"5px"}}>
               <Link to={item.postedBy._id != state._id ?"/profile/"+item.postedBy._id :"/profile/"}>
               <h5 className="chip">
-              <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky"}}
+              <img style={{width:"40px",height:"40px",borderRadius:"100px",position:"sticky" }}
                 src={item.postedBy.pic}
                   />
                   {item.postedBy.name} 
@@ -137,7 +137,7 @@ const Home = ()=>{
               <a className=" btn-floating btn-small waves-effect waves-light red right">  
               <i className="material-icons right center">more_vert</i></a>
               <Link to="/healing" >
-              <i className="material-icons right">  healing </i> </Link>
+              <i className="material-icons right" style={{margin:"0px 15px 10px 10px"}} >  healing </i> </Link>
                     {
                     item.postedBy._id == state._id  &&  <i className="material-icons right"
                     onClick={()=>deletePost(item._id)}
