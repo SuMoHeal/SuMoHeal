@@ -6,42 +6,42 @@ const Post = mongoose.model('Post')
 const User = mongoose.model('User')
 var nodemailer = require('nodemailer');
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'hammamiamneh7@gmail.com',
-      pass: 'AmnehHammami'
-    }
-  });
-var obj={}
-var obj2={email:''}
+// var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'hammamiamneh7@gmail.com',
+//       pass: 'AmnehHammami'
+//     }
+//   });
+// var obj={}
+// var obj2={email:''}
 
-router.post('/send',(req,res)=>{
-    var bill = {amount:900,hospitalName:'lol0'}
-    var bill2 = {amount:0,hospitalName:'youmna'}
-   var payment=req.body.payment
-   var selected=req.body.selected
-   var feed=req.body.feed
-   var id=req.body.id
-        User.findOne({id:id}).then(function(result){
-        console.log("Amneh "+result)
-                var mailOptions = {
-                    from: 'hammamiamneh7@gmail.com',
-                    to:obj2.email,
-                    subject: 'Sending Email using Node.js',
-                    text:'someone will pay for you '+payment+' $'+' and the way of payment is '+selected
-                  };
-                  //
-                  transporter.sendMail(mailOptions, function(error, info){
-                    if (error) {
-                      console.log(error);
-                    } else {
-                      console.log('Email sent: ' + info.response);
-                    }
-               });
-        res.send('Amneh send: ')
-        })
-   })
+// router.post('/send',(req,res)=>{
+//     var bill = {amount:900,hospitalName:'lol0'}
+//     var bill2 = {amount:0,hospitalName:'youmna'}
+//    var payment=req.body.payment
+//    var selected=req.body.selected
+//    var feed=req.body.feed
+//    var id=req.body.id
+//         User.findOne({id:id}).then(function(result){
+//         console.log("Amneh "+result)
+//                 var mailOptions = {
+//                     from: 'hammamiamneh7@gmail.com',
+//                     to:obj2.email,
+//                     subject: 'Sending Email using Node.js',
+//                     text:'someone will pay for you '+payment+' $'+' and the way of payment is '+selected
+//                   };
+//                   //
+//                   transporter.sendMail(mailOptions, function(error, info){
+//                     if (error) {
+//                       console.log(error);
+//                     } else {
+//                       console.log('Email sent: ' + info.response);
+//                     }
+//                });
+//         res.send('Amneh send: ')
+//         })
+//    })
 
 router.get('/user/:id',requireLogin,(req,res)=>{
     User.findOne({_id:req.params.id})
