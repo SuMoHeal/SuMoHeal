@@ -14,6 +14,7 @@ router.get('/allpost',requireLogin,(req,res)=>{
     .populate("_id name")
     .populate("_id pic")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
         res.json({posts})
         
@@ -26,8 +27,15 @@ router.get('/allpost',requireLogin,(req,res)=>{
 router.get('/getsubpost',requireLogin,(req,res)=>{
     // if postedBy is showing in following list then show the post 
     Post.find({postedBy:{$in:req.user.following}})
-    .populate('postedBy',"_id name")
+    .populate({
+        path: 'postedBy',
+        perDocumentLimit: 2
+     
+    })
+    .populate("_id name")
+    .populate("_id pic")
     .populate("comments.postedBy","_id name")
+    .sort('-createdAt')
     .then(posts=>{
         res.json({posts})
         
