@@ -6,7 +6,17 @@ const bcrypt = require("bcryptjs")
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require("../config/keys")
 const requireLogin = require("../middleware/requirelogin")
+const nodemailer = require('nodemailer')
+const sendgridTransport = require('nodemailer-sendgrid-transport')
 
+//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
+
+
+const transporter = nodemailer.createTransport(sendgridTransport({
+    auth:{
+        api_key:"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"
+    }
+}))
 
 //saving data to mongo database & testing that on postman
 router.post('/signup',(req,res)=>{
@@ -32,6 +42,12 @@ router.post('/signup',(req,res)=>{
         })
         user.save()
         .then(user=>{
+            transporter.sendMail({
+                to:user.email,
+                from:"sumoheal@sumoheal.com",
+                subject:"signup success",
+                html:"<h1>Welcome to SuMoHeal</h1>"
+            })
             res.json({message:"saved successfully"})
         })
         .catch(err=>{
