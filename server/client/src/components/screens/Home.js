@@ -110,7 +110,7 @@ const Home = ()=>{
  
 
   return(
-    <div className="home">
+    <div className="home" key="homey">
      {
        data.map(item=>{
           return (
@@ -184,7 +184,7 @@ const Home = ()=>{
           {
               item.comments.map(record=>{
                 return(
-                 <table className="striped">
+                 <table className="striped" >
                     <thead>
                       <tr>
                           <th>{record.postedBy.name}</th>
