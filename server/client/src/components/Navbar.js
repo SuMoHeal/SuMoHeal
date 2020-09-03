@@ -32,8 +32,10 @@ const NavBar = () =>{
      ]
     }else{
       return [
+        
         <li key="6"><Link to="/login">Login</Link></li>,
-        <li key="7"><Link to="/signup">Signup</Link></li>
+        <li key="7"><Link to="/signup">Signup</Link></li>,
+        <li key="8"><Link to="/aboutus">AboutUs</Link></li>
       ]
     }
   }
@@ -57,6 +59,7 @@ const NavBar = () =>{
       <nav>
   <div className="nav-wrapper #0d47a1 blue darken-4" >
           <Link to={state?"/":"/login"} className="brand-logo left">SuMoHeale</Link> 
+        
           <ul id="nav-mobile" className="right">
            {renderList()}
           </ul>
