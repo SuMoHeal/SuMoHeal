@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import M from 'materialize-css'
 
+
+
 const CreatePost = ()=>{
   const history = useHistory()
   const [title,setTitle] = useState("")
@@ -82,7 +84,7 @@ const CreatePost = ()=>{
         <h2>SuMoHeal</h2>
      
        <div className="input-field col s6">
-          <i className="material-icons prefix">subject</i>
+          <i className="material-icons prefix" >subject</i>
           <input  type="text" placeholder="title"
           value={title}
           onChange={(e)=>setTitle(e.target.value)}
